@@ -1,5 +1,6 @@
 import { Component } from 'react'
-import { constrctorStyle, didMountingStyle } from '../sytles';
+import { constrctorStyle, didMountingStyle, didUpdatingStyle, unMountingStyle } from '../sytles';
+
 
 interface IProps {}
 interface IState {
@@ -19,16 +20,26 @@ interface IState {
     
   // FETCH DATA FROM API
   componentDidMount(){
-    console.log("%cDidMount - componrntDidMount - #3 - API",didMountingStyle);
+    console.log("%cDidMount - componantDidMount - #3 - API",didMountingStyle);
     fetch('https://dummyjson.com/products')
     .then(res => res.json())
     .then(data=>{
       this.setState({products:data.products})
     });
   }
+  componentDidUpdate() {
+    console.log("%cDidUpdate - componantDidUpdate - AFter re-render",didUpdatingStyle);
+    
+  }
+  
+componentWillUnmount(){
+  console.log("%cDidUnmount - componentWillUnmount - AFter re-render",unMountingStyle);
+}
+
+
   render() {
     return (
-      <div>
+      <div className='border-2 border-red-800'>
         ProductsPage
       {
              this.state.products.map(({id,title}:{id:number;title:string})=>(
