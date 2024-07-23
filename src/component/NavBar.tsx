@@ -1,6 +1,6 @@
 
 
-const NavBar  = ({setPage}:{setPage:(page:string)=>void}) => {
+const NavBar  = ({setPage}:{setPage:(page:'home' | 'products' | 'about' |'useeffect')=>void}) => {
   return (
     <nav>
     <ul className="flex items-center justify-center space-x-3">
@@ -9,6 +9,7 @@ const NavBar  = ({setPage}:{setPage:(page:string)=>void}) => {
       }}>home</li>
       <li className="underline cursor-pointer hover:text-indigo-200 " onClick={()=>setPage("products")}>products</li>
       <li className="underline cursor-pointer hover:text-indigo-200 "onClick={()=>{setPage("about")}}>About US</li>
+      <li className="underline cursor-pointer hover:text-indigo-200 "onClick={()=>{setPage("useeffect")}}>UseEffect</li>
     </ul>
     </nav>
   )
